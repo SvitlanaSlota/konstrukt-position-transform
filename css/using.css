@@ -1,92 +1,88 @@
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: "Farro", sans-serif;
   margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  /* Запобігає горизонтальній прокрутці */
+  font-family: "Farro", sans-serif;
   background: #ffffff;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+}
+
+.header,
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .header {
-  width: 1200px;
-  height: 54px;
+  min-height: 54px;
   margin-top: 13px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 0px;
+}
 
-  .header-content {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-  }
+.header .header-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
 
-  .language {
-    align-items: center;
-    font: 600 22px / 0.81818 "Tourney", sans-serif;
-    letter-spacing: 0.04em;
-    text-align: center;
-    color: #000;
-  }
+.language {
+  font: 600 22px / 0.81818 "Tourney", sans-serif;
+  letter-spacing: 0.04em;
+  color: #000;
+  white-space: nowrap;
+  /* Щоб текст не переносився */
+}
 
-  .navigation {
-    display: flex;
-    width: 261px;
-    height: 20px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 10px;
+.navigation {
+  display: flex;
+  /* Прибираємо фіксовану ширину 261px, щоб блок міг стискатись */
+  width: auto;
+  align-items: center;
+}
 
-    ul {
-      width: 261px;
-      height: 20px;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: row;
-      gap: 10px;
+.navigation ul {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  /* Перенос тексту, якщо екран дуже малий */
+}
 
-      li {
-        font: 400 22px "Staatliches", sans-serif;
-        letter-spacing: 0.03em;
-        color: #000;
-        list-style-type: none;
-        text-decoration: none;
-      }
-
-      a {
-        font: 400 22px "Staatliches", sans-serif;
-        letter-spacing: 0.03em;
-        color: #000;
-        text-decoration: none;
-      }
-
-      span {
-        font: 400 22px "Staatliches", sans-serif;
-        letter-spacing: 0.03em;
-        color: #000;
-      }
-    }
-  }
+.navigation ul li,
+.navigation ul a,
+.navigation ul span {
+  font: 400 22px "Staatliches", sans-serif;
+  letter-spacing: 0.03em;
+  color: #000;
+  text-decoration: none;
+  list-style: none;
+  white-space: nowrap;
+  /* Текст пунктів меню в один рядок */
 }
 
 .logo {
   width: 237px;
-  height: 54px;
+  max-width: 100%;
+  /* Щоб не вилазив за екран на мобільних телефонах */
+  height: auto;
+  /* Зберігаємо пропорції */
 }
 
 .container {
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   display: flex;
-  margin: 0px;
-  padding: 0px;
+  box-sizing: border-box;
+
 }
 
 .main-content {
@@ -110,32 +106,29 @@ body {
   padding: 0;
 }
 
-.using-container {
-  justify-content: center;
-  border-bottom: 1px solid #bfbfbf;
-  border-top: 1px solid #bfbfbf;
-  padding: 0px;
-  padding-inline: 0px;
-  width: 1200px;
-  height: 430px;
-}
-
 h3 {
   font: 600 36px / 1.33333 "Roboto", sans-serif;
   letter-spacing: 0.04em;
   color: #000;
-  padding: 0;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 20px;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  padding: 0;
 }
 
+/* Чорна лінія */
 h3::before {
   content: "";
-  display: inline-block;
+  display: block;
   width: 100px;
   height: 8px;
   background-color: #000;
+  flex-shrink: 0;
+  /* Лінія не сплющується */
 }
 
 .cards-container {
@@ -155,8 +148,6 @@ h3::before {
   justify-content: center;
   flex-direction: unset;
   align-items: unset;
-  width: 1200px;
-  margin: 0 auto;
 }
 
 .card {
@@ -167,7 +158,7 @@ h3::before {
   cursor: pointer;
 }
 
-/* Внутрішній контейнер, що обертається */
+/* Внутрішній контейнер, який обертається */
 .card-inner {
   position: relative;
   width: 100%;
@@ -224,6 +215,51 @@ h3::before {
     grid-template-rows: auto;
     /* Висота рядків автоматична */
     height: auto;
+  }
+}
+
+/* Планшети (до 900px) */
+@media (max-width: 900px) {
+  .header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .header .header-content {
+    gap: 20px;
+    /* Зменшуємо відстань між мовою і меню */
+  }
+}
+
+@media (max-width: 768px) {
+  h3 {
+    font-size: 28px;
+    /* Зменшуємо шрифт на планшетах/мобільних */
+    gap: 15px;
+    /* Менша відстань до лінії */
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  h3::before {
+    width: 60px;
+    /* Лінія стає коротшою */
+    height: 6px;
+    /* Лінія стає тоншою */
+  }
+}
+
+@media (max-width: 480px) {
+  h3 {
+    font-size: 24px;
+    /* Менший шрифт для телефонів */
+    gap: 10px;
+  }
+
+  h3::before {
+    width: 40px;
+    /* Коротша лінія для вузьких екранів */
+    height: 4px;
   }
 }
 
