@@ -98,8 +98,22 @@ body {
   padding-left: 10px;
   top: 0;
 
-  h2 {
-    margin-bottom: 70px;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    letter-spacing: 0.04em;
+
+    li {
+      margin-bottom: 70px;
+
+      .link {
+        font: 400 36px / 1.33333 "Francois One", sans-serif;
+        text-transform: uppercase;
+        color: #000;
+        text-decoration: none;
+      }
+    }
   }
 }
 
@@ -111,7 +125,7 @@ body {
   align-items: flex-start;
 }
 
-.intro {
+#intro {
   width: 785px;
   height: 308px;
   align-items: flex-start;
@@ -160,7 +174,7 @@ hgroup {
   gap: 10px;
 }
 
-.core-components {
+#core-components {
   width: 785px;
   height: 452px;
   margin-top: 70px;
@@ -180,7 +194,7 @@ hgroup {
   }
 }
 
-.react-fundamentals {
+#react-fundamentals {
   width: 785px;
   height: 1331px;
   margin-top: 70px;
@@ -197,7 +211,7 @@ hgroup {
   }
 }
 
-.handling-text-input {
+#handling-text-input {
   width: 785px;
   height: 540px;
   margin-top: 70px;
